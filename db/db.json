@@ -1,0 +1,17 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "dvss",
+      "avatar": "df",
+      "gender": "Nữ"
+    },
+    {
+      "id": 2,
+      "name": "Songoku 1",
+      "avatar": "sdakfjdfksd",
+      "gender": "Nữ"
+    }
+  ],
+  "enemies": []
+}

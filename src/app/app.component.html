@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="col-6">
+        <h3>Form Hero</h3>
+        {{ formHero | json }}
+        <div class="form-group">
+            <label for="">Mã số</label>
+            <input type="text" [(ngModel)]="formHero.id" disabled class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Tên</label>
+            <input type="text" [(ngModel)]="formHero.name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Avatar</label>
+            <input type="text" [(ngModel)]="formHero.avatar" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Giới tính</label>
+            <select class="form-control" [(ngModel)]="formHero.gender" id="">
+               <option value="Nam">Nam</option>
+               <option value="Nữ">Nữ</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn  btn-primary" (click)="submitForm()">Lưu</button>
+        </div>
+    </div>
+
+    <div class="title1">
+        <h2>Danh Sách Songoku</h2>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <th>Mã Số</th>
+            <th>Tên</th>
+            <th>ảnh</th>
+            <th>Giới Tính</th>
+            <th>Chức Năng</th>
+        </thead>
+        <tbody *ngIf="heroes.length > 0">
+            <tr *ngFor="let item of heroes">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <img [src]="item.avatar" width="150" alt="">
+                </td>
+                <td>{{item.gender}}</td>
+                <td><button (click)="update(item)" class="btn btn-sm btn-primary">Sửa</button>
+                    <button (click)="remove(item)" class="btn btn-sm btn-primary">Xóa</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="col-6">
+        <h3>Form Emenies</h3>
+        {{ formEmenies | json }}
+        <div class="form-group">
+            <label for="">Mã số</label>
+            <input type="text" [(ngModel)]="formEmenies.id" disabled class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Tên</label>
+            <input type="text" [(ngModel)]="formEmenies.name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Avatar</label>
+            <input type="text" [(ngModel)]="formEmenies.avatar" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Healthy</label>
+            <input type="number" [(ngModel)]="formEmenies.healthy" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Armor</label>
+            <input type="number" [(ngModel)]="formEmenies.armor" class="form-control">
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn  btn-primary" (click)="submitFormEmenies()">Lưu</button>
+        </div>
+    </div>
+    <div class="title2">
+        <h2>Danh sách Emenies</h2>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <th>Mã số</th>
+            <th>Tên</th>
+            <th>ảnh</th>
+            <th>Máu</th>
+            <th>Giáp</th>
+            <th>Chức năng</th>
+        </thead>
+        <tbody *ngIf="emenies.length > 0">
+            <tr *ngFor="let item of emenies">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <img [src]="item.avatar" width="150" alt="">
+                </td>
+                <td>{{item.healthy}}</td>
+                <td>{{item.armor}}</td>
+                <td>
+                    <button (click)="updateEmines(item)" class="btn btn-sm btn-primary">Sửa</button>
+                    <button class="btn btn-sm btn-danger" (click)="removeEmines(item)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
