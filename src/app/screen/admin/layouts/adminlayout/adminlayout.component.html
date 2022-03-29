@@ -6,18 +6,20 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-angle-double-left"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a routerLink="" class="nav-link">Trang chủ</a>
+                    <a routerLink="/admin" class="nav-link">Trang chủ</a>
                 </li>
+               
             </ul>
             <ul class="navbar-nav ml-auto">
+
                 <li class="nav-item mt-2 mr-2">
-                    <p class="">Xin chào, <span class="font-monospace">student</span></p>
+                    <p class="">Xin chào, <span class="font-monospace">Admin</span></p>
                 </li>
                 <li class="nav-item ">
                     <img src="https://facevip68.com/assets/images/avatar.jpg" width="40" class="rounded" alt="">
                 </li>
                 <li class="nav-item">
-                    <p (click)="logout()"class="logout nav-link text-primary">Đăng Xuất</p>
+                    <a href="" class="nav-link text-primary">Đăng Xuất</a>
                 </li>
 
             </ul>
@@ -53,13 +55,15 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a routerLink="" class="nav-link">
+                            <a routerLink="/admin" class="nav-link">
                                 <i class=" nav-icon fas fa-home"></i>
                                 <p>Trang Chủ</p>
                             </a>
                         </li>
+
+
                         <li class="nav-item">
-                            <a routerLink="/mon-hoc" class="nav-link">
+                            <a routerLink="/admin/mon-hoc" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Môn Học
@@ -68,12 +72,42 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a routerLink="/mon-hoc" class="nav-link">
+                                    <a routerLink="/admin/mon-hoc" class="nav-link">
                                         <i class="nav-icon fas fa-copy"></i>
                                         <p>Danh Sách Môn Học</p>
                                     </a>
                                 </li>
-                               
+                                <li class="nav-item">
+                                    <a routerLink="/admin/mon-hoc/add" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                        <p>Thêm Môn Học</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>  
+                        <li class="nav-item">
+                            <a routerLink="/admin/sinh-vien" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Sinh Viên
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a routerLink="/admin/sinh-vien" class="nav-link">
+                                        <i class="nav-icon fas fa-copy"></i>
+                                        <p>Danh Sách Sinh Viên</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a routerLink="/admin/sinh-vien/add" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                        <p>Thêm sinh viên</p>
+                                    </a>
+                                </li>
+
                             </ul>
                         </li>
                     </ul>
@@ -81,7 +115,7 @@
             </div>
         </aside>
 
-        <div class="content-wrapper ">
+        <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -97,6 +131,7 @@
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2022 <a href="https://Azota.io"></a>.</strong> Hệ thống làm quiz online
             <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0-rc
             </div>
         </footer>
         <aside class="control-sidebar control-sidebar-dark">

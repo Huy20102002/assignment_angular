@@ -1,1 +1,70 @@
-<p>add-student works!</p>
+<div class="row row-sm-3">
+    <div class="title">
+        <h3>Thêm sinh viên</h3>
+    </div>
+    <form [formGroup]="formStudent" (submit)="addStudent()">
+        <div class="mb-3">
+            <label for="" class="">Tên sinh viên</label>
+            <input type="text" formControlName="fullname" class="form-control">
+        </div>
+        <div *ngIf="formStudent.controls['fullname'].invalid &&(formStudent.controls['fullname'].touched || formStudent.controls['fullname'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['fullname'].errors?.['required']">
+                Hãy nhập tên sinh viên
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Email</label>
+            <input type="email" formControlName="email" class="form-control">
+        </div>
+        <div *ngIf="formStudent.controls['email'].invalid &&(formStudent.controls['email'].touched || formStudent.controls['email'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['email'].errors?.['required']">
+                Email không được để trống
+            </span>
+            <span class="text-danger" *ngIf="formStudent.controls['email'].errors?.['email']">
+                Email không đúng định dạng
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Tên đăng nhập</label>
+            <input type="text" formControlName="username" class="form-control">
+        </div>
+        <div *ngIf="formStudent.controls['username'].invalid &&(formStudent.controls['username'].touched || formStudent.controls['username'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['username'].errors?.['required']">
+               Tên đăng nhập không được để trống
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Mật khẩu</label>
+            <input type="password" formControlName="password" class="form-control">
+        </div>
+        <div *ngIf="formStudent.controls['password'].invalid &&(formStudent.controls['password'].touched || formStudent.controls['password'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['password'].errors?.['required']">
+               Mật khẩu không được để trống
+            </span>
+            <span class="text-danger" *ngIf="formStudent.controls['password'].errors?.['minlength']">
+                Mật khẩu không được ít hơn 6 ký tự
+             </span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Ngày sinh</label>
+            <input type="date" formControlName="birthday" class="form-control">
+        </div>
+        <div *ngIf="formStudent.controls['birthday'].invalid &&(formStudent.controls['birthday'].touched || formStudent.controls['birthday'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['birthday'].errors?.['required']">
+               Ngày sinh không được để trống !
+            </span>
+          
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Giới Tính</label>
+            <select  formControlName="gender" class="form-control">
+                <option value="0">Nam</option>
+                <option value="1">Nữ</option>
+                <option value="2">Khác</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <button [disabled]="formStudent.invalid" class="btn btn-primary">Thêm</button>
+        </div>
+    </form>
+  </div>

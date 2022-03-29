@@ -1,1 +1,57 @@
-<p>Home work</p>
+<div class="container">
+    <div class="row">
+        <div class="col bg-white rounded ">
+            <div class="profile">
+                <div class=" d-flex flex-row p-4 pt-3  ">
+                    <div class="profile_img">
+                        <img src="https://facevip68.com/assets/images/avatar.jpg" class="rounded " width="100" alt="">
+                    </div>
+                    <div class="profile_name ml-3">
+                        <span class="text-success fs-5">Student <i class="fa fa-check text-success"></i></span>
+                        <br>
+                        <div class="email mt-2">
+                            <span class="text-warning">
+                                <i class="fas fa-envelope text-warning"></i> <span
+                                    class="ml-2">Student123@gmail.com</span>
+                            </span>
+                            <span class="text-primary ml-4">
+                                <i class="fas fa-user-alt text-primary"></i> Student
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <div class="profile bg-white rounded">
+                <div class=" d-flex flex-row p-4 pt-3  ">
+                    <div class="title">
+                        <h3>Môn Học</h3>
+                    </div>
+                </div>
+            </div>
+            <div class=" mt-3">
+                <div class=" row m-auto">
+                    <div class="col-sm-3" *ngFor="let item of subject">
+                        <div class="card m-auto m-2 mb-2" style="width: 16rem;">
+                            <img src="https://kenh14cdn.com/2020/10/28/photo-1-16038713284471831574126.png" width="300"
+                                height="200" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.Name}}</h5>
+                                <p class="card-text">{{item.Code}}</p>
+                                <a routerLink="/quiz/{{item.Code}}" class="btn btn-primary">Tham Gia</a>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="subject_more mb-3 text-center">
+                            <button class="btn btn-primary" (click)="subjectNavigate()">Xem Thêm</button>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

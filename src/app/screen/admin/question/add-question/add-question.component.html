@@ -1,1 +1,46 @@
-<p>add-question works!</p>
+<div class="row row-sm-3">
+    <div class="title">
+        <h3>Thêm câu hỏi</h3>
+    </div>
+    <form [formGroup]="formQuestions" (submit)="addQuestions()">
+        <div class="mb-3">
+            <label for="" class="">Tên Câu hỏi</label>
+            <input type="text" class="form-control">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="" class="">Điểm</label>
+            <input type="text" class="form-control">
+        </div>
+
+        <div class="mb-3 ">
+            <label for="" class="">Đáp án
+                <button class="btn btn-success ml-3" (click)="addFormQuestion()">Thêm đáp án</button>
+            </label>
+            <div class="mb-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" aria-label="Checkbox for following text input" name="radio">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                </div>
+                <ng-container *ngFor="let item of formhtml">
+                    <div [innerHTML]="item | innerHtml">
+                        {{item}}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="">Đáp án đúng</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Thêm</button>
+        </div>
+    </form>
+</div>

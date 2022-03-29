@@ -1,14 +1,31 @@
 <div class="limit">
     <div class="login-container">
         <div class="bb-login">
-            <form class="bb-form validate-form"> <span class="bb-form-title p-b-26">  Đăng Ký  Quiz Online  </span> <span class="bb-form-title p-b-48"> <i class="mdi mdi-symfony"></i> </span>
+            <form class="bb-form validate-form" [formGroup]="formRegister" (submit)="register()"> <span class="bb-form-title p-b-26">  Đăng Ký  Quiz Online  </span> <span class="bb-form-title p-b-48"> <i class="mdi mdi-symfony"></i> </span>
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="text" id="email" class="form-control" placeholder="Email">
+                    <input type="text" id="email" formControlName="email" class="form-control" placeholder="Email" required >
+                </div>
+                <div *ngIf="formRegister.controls['email'].invalid &&(formRegister.controls['email'].touched || formRegister.controls['email'].dirty)">
+                    <span class="text-danger" *ngIf="formRegister.controls['email'].errors?.['email']">
+                        Hãy nhập email đúng định dạng
+                    </span>
+                    <span class="text-danger" *ngIf="formRegister.controls['email'].errors?.['required']">
+                        Hãy nhập email
+                    </span>
                 </div>
                 <div class="mb-3">
                     <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" class="form-control" placeholder="password...">
+                    <input type="password" id="password"  formControlName="password" class="form-control" placeholder="password...">
+                </div>
+                <div *ngIf="formRegister.controls['password'].invalid &&(formRegister.controls['password'].touched || formRegister.controls['password'].dirty)">
+                                 
+                    <span class="text-danger" *ngIf="formRegister.controls['password'].errors?.['required']">
+                        Hãy nhập password
+                    </span>
+                    <span class="text-danger" *ngIf="formRegister.controls['password'].errors?.['minlength']">
+                        Hãy nhập password 6 chữ số trở lên
+                    </span>
                 </div>
                 <div class="mb-3">
                     <label for="repassword">Nhập lại mật khẩu</label>

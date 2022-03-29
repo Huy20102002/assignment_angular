@@ -1,1 +1,37 @@
-<p>quiz works!</p>
+<div class="row">
+    <h2 class="m-auto text-center">Quiz Online</h2>
+    <br>
+    <div class="container m-auto">
+        <div class="container bg-white  border-bottom ">
+            <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                <h4>Quiz 1 :</h4>
+                <h4>Thời gian: {{counter}}P</h4>
+                <span> <button (click)="final()" class="btn btn-success">Hoàn thành bài thi</button></span>
+            </div>
+        </div>
+        <div class="container  my-1 m-auto ">
+            <span class="m-auto ">({{currentQuestion+1}} of {{quiz.length}})</span>
+            <div class="question ml-sm-5 pl-sm-5 pt-2">
+                <div class="py-2 h5">
+                    <b>{{quiz[currentQuestion]?.Text }}</b>
+                </div>
+                <br>
+                <div class=" ml-sm-3 pl-md-5 pt-sm-0 pt-3 row justify-content-between" id="options">
+                    <ng-container *ngFor="let item of quiz[currentQuestion]?.Answers ">
+                        <div class="col-sm-6 ">
+                            <label class="options">{{item.Text}}    
+                                <input type="radio" name="radio"> <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="d-flex align-items-center pt-3">
+                <div  class="ml-auto ml-sm-5"> <button [disabled]="currentQuestion===0" (click)="prevQuestion()" class="btn btn-danger">Quay lại</button>
+                </div>
+                <div class="ml-auto mr-sm-5"> <button [disabled]="currentQuestion===quiz.length-1" (click)="nextQuestion()" class="btn btn-success">Tiếp
+                        theo</button> </div>
+            </div>
+        </div>
+    </div>
+</div>

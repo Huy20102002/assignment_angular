@@ -1,67 +1,28 @@
 {
-  "students": [
+  "users": [
     {
       "id": 1,
-      "username": "teonv",
-      "password": "iloveyou",
-      "fullname": "Nguyễn Văn Tèo",
-      "email": "teonv@fpt.edu.vn",
-      "gender": "true",
-      "birthday": "1995-12-21",
-      "schoolfee": "1500000",
-      "marks": "0"
-    },
-    {
-      "id": 2,
-      "username": "pheonv",
-      "password": "iloveyou",
-      "fullname": "Nguyễn Văn Chí Phèo",
-      "email": "pheonv@fpt.edu.vn",
-      "gender": "true",
-      "birthday": "1985-10-11",
-      "schoolfee": "2500000",
-      "marks": {
-        "ADAV" : 9 
-      }
-    },
-    {
-      "id": 3,
-      "username": "nopt",
-      "password": "iloveyou",
-      "fullname": "Phạm Thị Nở",
-      "email": "nopt@fpt.edu.vn",
-      "gender": "false",
-      "birthday": "1993-05-15",
-      "schoolfee": "2000000",
-      "marks": "0"
-    },
-    {
-      "username": "thienth",
-      "password": "123456",
-      "fullname": "trần hữu thiện",
-      "email": "thienth@gmail.com",
-      "gender": "true",
-      "birthday": "1991-01-01",
-      "schoolfee": "11000",
-      "marks": "8",
-      "id": 4
-    },
-    {
-      "fullname": "thienth",
-      "username": "thienth",
-      "password": "123456",
-      "gender": "true",
-      "birthday": "1990-12-31T17:00:00.000Z",
-      "schoolfee": 100,
-      "id": 5
+      "name": "Bùi Tiến Huy",
+      "email": "huybtph14352@fpt.edu.vn",
+      "googleId": "108082186174090804440",
+      "avatar": "https://lh3.googleusercontent.com/a/AATXAJyq4zX4f5BHsWfaw-duflPYFMAj5pLyDUiSIDgN=s96-c",
+      "marks": [],
+      "roles": [
+        {
+          "name": "admin"
+        },
+        {
+          "name": "member"
+        }
+      ]
     }
   ],
   "subjects": [
     {
-      "id": 1,
+      "Name": "Lập trình Android nâng cao1",
       "Code": "ADAV",
-      "Name": "Lập trình Android nâng cao",
-      "Logo": "ADAV.jpg"
+      "Logo": "ADAV.jpg",
+      "id": 1
     },
     {
       "id": 2,
@@ -178,12 +139,13 @@
       "id": 20
     },
     {
-      "Code": "WEB207",
-      "Name": "Lập trình Frontend framework - angularjs",
-      "Logo": "ADAV.jpg",
+      "Name": "ReactNative",
+      "Code": "RNTV",
+      "Logo": "https://kenh14cdn.com/2020/10/28/photo-1-16038713284471831574126.png",
       "id": 21
     }
   ],
+  "startquiz": [],
   "ADAV": [
     {
       "Id": 25106,

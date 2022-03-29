@@ -1,1 +1,42 @@
-<p>edit-subject works!</p>
+<div class="row row-sm-3">
+    <div class="title">
+        <h3>Cập Nhật Môn Học</h3>
+    </div>
+    <form [formGroup]="formSubject" (submit)="editSubject()">
+        <div class="mb-3">
+            <label for="" class="">Tên Môn Học</label>
+            <input type="text" formControlName="Name" class="form-control">
+        </div>
+        <div
+            *ngIf="formSubject.controls['Name'].invalid &&(formSubject.controls['Name'].touched || formSubject.controls['Name'].dirty)">
+            <span class="text-danger" *ngIf="formSubject.controls['Name'].errors?.['required']">
+                Hãy nhập tên môn học
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="">CODE</label>
+            <input type="text" formControlName="Code" class="form-control">
+        </div>
+        <div
+            *ngIf="formSubject.controls['Code'].invalid &&(formSubject.controls['Code'].touched || formSubject.controls['Code'].dirty)">
+            <span class="text-danger" *ngIf="formSubject.controls['Code'].errors?.['required']">
+                Hãy nhập Code
+            </span>
+
+        </div>
+        <div class="mb-3">
+            <label for="" class="">Image</label>
+            <input type="text" formControlName="Logo" class="form-control">
+        </div>
+        <div
+            *ngIf="formSubject.controls['Logo'].invalid &&(formSubject.controls['Logo'].touched || formSubject.controls['Logo'].dirty)">
+            <span class="text-danger" *ngIf="formSubject.controls['Logo'].errors?.['required']">
+                Hãy nhập ảnh
+            </span>
+
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" [disabled]="formSubject.invalid">Thêm</button>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
   selector: 'app-edit-subject',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditSubjectComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private Subjects: SubjectsService, private ActivatedRouter: ActivatedRoute, private Router: Router) { }
+  subjectsId: string = "";
+  formSubject: FormGroup = new FormGroup({
+    Name: new FormControl('', [
+      Validators.required,
+    ]),
+    Code: new FormControl('', [
+      Validators.required
+    ]),
+    Logo: new FormControl('', [
+      Validators.required
+    ])
+  })
   ngOnInit(): void {
+    this.ActivatedRouter.params.subscribe(par => {
+      const { id } = par;
+      this.subjectsId = id;
+      this.Subjects.getIdSubject(id)
+        .subscribe(data => {
+          this.formSubject.patchValue(data)
+        })
+    })
+  }
+  editSubject() {
+    this.Subjects.updateSubject(this.formSubject.value, this.subjectsId)
+      .subscribe(par => {
+        this.Router.navigate(['/admin/mon-hoc']);
+      })
   }
 
 }

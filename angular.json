@@ -32,6 +32,7 @@
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
               "node_modules/admin-lte/dist/css/adminlte.css"
+              
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/jquery/jquery.js",

@@ -4,7 +4,7 @@ import {HttpClientModule}from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './screen/login/login.component';
 import { RegisterComponent } from './screen/register/register.component';
 import { SubjectsComponent } from './screen/subjects/subjects.component';
@@ -22,7 +22,12 @@ import { EditSubjectComponent } from './screen/admin/subject/edit-subject/edit-s
 import { QuestionComponent } from './screen/admin/question/question.component';
 import { AddQuestionComponent } from './screen/admin/question/add-question/add-question.component';
 import { EditQuestionComponent } from './screen/admin/question/edit-question/edit-question.component';
-
+import { AdminlayoutComponent } from './screen/admin/layouts/adminlayout/adminlayout.component';
+import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
+import { CdTimerModule  } from 'angular-cd-timer';
+import { InnerHtmlPipe } from './untils/inner-html.pipe';
+import { ShufflePipe } from './untils/shuffle.pipe';
 
 @NgModule({
   declarations: [
@@ -44,15 +49,39 @@ import { EditQuestionComponent } from './screen/admin/question/edit-question/edi
     QuestionComponent,
     AddQuestionComponent,
     EditQuestionComponent,
+    AdminlayoutComponent,
+    InnerHtmlPipe,
+    ShufflePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SocialLoginModule,
+    CdTimerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.GOOGLE_CLIENT_ID
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

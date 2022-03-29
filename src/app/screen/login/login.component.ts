@@ -1,15 +1,48 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+  constructor(
+    private authService: SocialAuthService,
+    private router: Router,
+    private auth: AuthServiceService) { }
+  loginform: Array<any> = [];
+  formlogin: FormGroup = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6)
+    ])
+  });
+  login() {
 
-  ngOnInit(): void {
+   
   }
+  googleLogin() {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(resp => {
+        // this.router.navigate([''])
+        this.auth.login(resp.email, resp.id)
+          .subscribe(data => {
+            if(resp.id === data[0].googleId){
+              localStorage.setItem("users",JSON.stringify(resp));
+              this.router.navigate([''])
+            }
+          })
+      })
+  }
+
 
 }

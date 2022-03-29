@@ -1,26 +1,50 @@
+
 <div class="limit">
     <div class="login-container">
         <div class="bb-login">
-            <form class="bb-form validate-form"> <span class="bb-form-title p-b-26">  Đăng Nhập Quiz Online </span> <span class="bb-form-title p-b-48"> <i class="mdi mdi-symfony"></i> </span>
+            <form class="bb-form validate-form" [formGroup]="formlogin" (submit)="login()"> <span
+                    class="bb-form-title p-b-26"> Đăng Nhập Quiz Online </span> <span class="bb-form-title p-b-48"> <i
+                        class="mdi mdi-symfony"></i> </span>
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="text" id="email" class="form-control" placeholder="Email">
+                    <input type="text" id="email" formControlName="email" class="form-control" placeholder="Email">
+                    <div *ngIf="formlogin.controls['email'].invalid &&(formlogin.controls['email'].touched || formlogin.controls['email'].dirty)">
+                        <span class="text-danger" *ngIf="formlogin.controls['email'].errors?.['email']">
+                            Hãy nhập email đúng định dạng
+                        </span>
+                        <span class="text-danger" *ngIf="formlogin.controls['email'].errors?.['required']">
+                            Hãy nhập email
+                        </span>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" class="form-control" placeholder="password...">
+                    <input type="password" id="password" formControlName="password" class="form-control"
+                        placeholder="password...">
+                </div>
+                <div *ngIf="formlogin.controls['password'].invalid &&(formlogin.controls['password'].touched || formlogin.controls['password'].dirty)">
+                                 
+                    <span class="text-danger" *ngIf="formlogin.controls['password'].errors?.['required']">
+                        Hãy nhập password
+                    </span>
+                    <span class="text-danger" *ngIf="formlogin.controls['password'].errors?.['minlength']">
+                        Hãy nhập password 6 chữ số trở lên
+                    </span>
                 </div>
                 <div class="login-container-form-btn">
                     <div class="bb-login-form-btn">
-                        <div class="bb-form-bgbtn"></div> <button class="bb-form-btn"> Đăng Nhập </button>
+                        <div class="bb-form-bgbtn"></div> <button [disabled]="formlogin.invalid" class="bb-form-btn"> Đăng Nhập </button>
                     </div>
                 </div>
                 <div class="login-container-form-btn">
                     <div class="bb-login-form-btn">
-                        <div class="bb-form-bgbtns"></div> <button class="bb-form-btn "><i class="mr-2 fs-4 fab fa-google"></i> Đăng nhập với google </button>
+                        <div class="bb-form-bgbtns"></div> <button (click)="googleLogin()" class="bb-form-btn "><i
+                                class="mr-2 fs-4 fab fa-google"></i> Đăng nhập với google </button>
                     </div>
                 </div>
-                <div class="text-center p-t-115"> <span class="txt1"> Bạn không có tài khoản ? </span> <a class="txt2" routerLink="/register"> Đăng Ký </a> </div>
+                <div class="text-center p-t-115"> <span class="txt1"> Bạn không có tài khoản ? </span> <a class="txt2"
+                        routerLink="/register"> Đăng Ký </a> </div>
+                        
             </form>
         </div>
     </div>
