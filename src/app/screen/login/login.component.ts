@@ -13,7 +13,6 @@ export class LoginComponent {
 
   constructor(
     private authService: SocialAuthService,
-    private router: Router,
     private auth: AuthServiceService) { }
   loginform: Array<any> = [];
   formlogin: FormGroup = new FormGroup({
@@ -27,19 +26,13 @@ export class LoginComponent {
     ])
   });
   login() {
-
-   
   }
   googleLogin() {
+
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(resp => {
-        // this.router.navigate([''])
         this.auth.login(resp.email, resp.id)
           .subscribe(data => {
-            if(resp.id === data[0].googleId){
-              localStorage.setItem("users",JSON.stringify(resp));
-              this.router.navigate([''])
-            }
           })
       })
   }

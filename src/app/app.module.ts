@@ -25,9 +25,9 @@ import { EditQuestionComponent } from './screen/admin/question/edit-question/edi
 import { AdminlayoutComponent } from './screen/admin/layouts/adminlayout/adminlayout.component';
 import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
-import { CdTimerModule  } from 'angular-cd-timer';
 import { InnerHtmlPipe } from './untils/inner-html.pipe';
 import { ShufflePipe } from './untils/shuffle.pipe';
+
 
 @NgModule({
   declarations: [
@@ -60,8 +60,8 @@ import { ShufflePipe } from './untils/shuffle.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule,
-    CdTimerModule
+    SocialLoginModule
+   
   ],
   providers: [
     {

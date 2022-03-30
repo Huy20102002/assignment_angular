@@ -23,10 +23,10 @@ const routes: Routes = [
   {
     path: "", component: HomelayoutComponent,
     children: [
-      { path: "", component: HomeComponent },
-      { path: "mon-hoc", component: SubjectsComponent },
+      { path: "", component: HomeComponent},
+      { path: "mon-hoc", component: SubjectsComponent},
       { path: "quiz/:id", component: QuizComponent },
-      { path: "quiz/:id/ket-qua", component: FinalComponent },
+      { path: "quiz/:id/ket-qua", component: FinalComponent},
     ]
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: "admin", component: AdminlayoutComponent,
     children: [
-      {path: "",component: DashboardComponent},
+      { path: "", component: DashboardComponent },
       { path: "sinh-vien", component: StudentComponent },
       { path: "sinh-vien/add", component: AddStudentComponent },
       { path: "sinh-vien/edit/:id", component: EditStudentComponent },

@@ -15,8 +15,9 @@ export class AddQuestionComponent implements OnInit {
           <input type="radio" aria-label="Checkbox for following text input"  name="radio">
       </div>
   </div>
-  <input type="text" class="form-control" aria-label="Text input with checkbox">
+  <input type="text" class="form-control" formControlName="Answer" aria-label="Text input with checkbox">
 </div>
+
   `;
   formhtml: Array<any> = [];
   formQuestions: FormGroup = new FormGroup({
@@ -26,7 +27,8 @@ export class AddQuestionComponent implements OnInit {
     Marks: new FormControl('', [
       Validators.required
     ]),
-    AnswerId: new FormControl('',[
+    AnswersId: new FormControl(''),
+    Answer: new FormControl('',[
       Validators.required
     ])  
   })

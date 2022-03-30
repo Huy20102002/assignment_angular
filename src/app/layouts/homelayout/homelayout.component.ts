@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-homelayout',
   templateUrl: './homelayout.component.html',
   styleUrls: ['./homelayout.component.css'],
 })
 export class HomelayoutComponent implements OnInit {
-  constructor() { }
+  constructor(private Auth: AuthServiceService) { }
   name: string = "";
+  
   ngOnInit(): void {
-    const {name}  =JSON.parse(<any>localStorage.getItem("users"));
-   this.name = name;
+
+    const data = this.Auth.getUsers();
+    const { name } = data[0];
+    this.name = name;
   }
-  logout(){
-    window.localStorage.removeItem("users");
+  logout() {
+    this.Auth.logout();
   }
 
 }

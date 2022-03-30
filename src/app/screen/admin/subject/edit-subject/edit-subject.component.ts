@@ -24,6 +24,7 @@ export class EditSubjectComponent implements OnInit {
     ])
   })
   ngOnInit(): void {
+
     this.ActivatedRouter.params.subscribe(par => {
       const { id } = par;
       this.subjectsId = id;
@@ -39,5 +40,6 @@ export class EditSubjectComponent implements OnInit {
         this.Router.navigate(['/admin/mon-hoc']);
       })
   }
+
 
 }

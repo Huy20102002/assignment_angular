@@ -46,24 +46,6 @@
              </span>
         </div>
         <div class="mb-3">
-            <label for="" class="">Ngày sinh</label>
-            <input type="date" formControlName="birthday" class="form-control">
-        </div>
-        <div *ngIf="formStudent.controls['birthday'].invalid &&(formStudent.controls['birthday'].touched || formStudent.controls['birthday'].dirty)">
-            <span class="text-danger" *ngIf="formStudent.controls['birthday'].errors?.['required']">
-               Ngày sinh không được để trống !
-            </span>
-          
-        </div>
-        <div class="mb-3">
-            <label for="" class="">Giới Tính</label>
-            <select  formControlName="gender" class="form-control">
-                <option value="0">Nam</option>
-                <option value="1">Nữ</option>
-                <option value="2">Khác</option>
-            </select>
-        </div>
-        <div class="mb-3">
             <button [disabled]="formStudent.invalid" class="btn btn-primary">Thêm</button>
         </div>
     </form>
