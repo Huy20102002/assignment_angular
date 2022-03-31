@@ -18,15 +18,16 @@ import { LoginComponent } from './screen/login/login.component';
 import { QuizComponent } from './screen/quiz/quiz.component';
 import { RegisterComponent } from './screen/register/register.component';
 import { SubjectsComponent } from './screen/subjects/subjects.component';
+import { AuthGuard } from './services/auth-guard';
 
 const routes: Routes = [
   {
-    path: "", component: HomelayoutComponent,
+    path: "", component: HomelayoutComponent,canActivate:[AuthGuard],
     children: [
-      { path: "", component: HomeComponent},
-      { path: "mon-hoc", component: SubjectsComponent},
-      { path: "quiz/:id", component: QuizComponent },
-      { path: "quiz/:id/ket-qua", component: FinalComponent},
+      { path: "", component: HomeComponent,canActivate:[AuthGuard]},
+      { path: "mon-hoc", component: SubjectsComponent,canActivate:[AuthGuard]},
+      { path: "quiz/:id", component: QuizComponent,canActivate:[AuthGuard]},
+      { path: "quiz/:id/ket-qua", component: FinalComponent,canActivate:[AuthGuard]},
     ]
   },
   {

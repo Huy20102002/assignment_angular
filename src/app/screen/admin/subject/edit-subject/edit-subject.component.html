@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label for="" class="">Image</label>
-            <input type="file" formControlName="Logo"  class="form-control">
+            <input type="file" formControlName="Logo" (change)="uploadFile($event)" class="form-control">
         </div>
         <div
             *ngIf="formSubject.controls['Logo'].invalid &&(formSubject.controls['Logo'].touched || formSubject.controls['Logo'].dirty)">

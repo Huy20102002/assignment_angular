@@ -29,6 +29,8 @@ import { InnerHtmlPipe } from './untils/inner-html.pipe';
 import { ShufflePipe } from './untils/shuffle.pipe';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,8 +62,8 @@ import { ShufflePipe } from './untils/shuffle.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule
-   
+    SocialLoginModule,
+    
   ],
   providers: [
     {

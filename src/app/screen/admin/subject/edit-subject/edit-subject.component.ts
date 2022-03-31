@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SubjectsService } from 'src/app/services/subjects.service';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-edit-subject',
@@ -10,7 +11,10 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class EditSubjectComponent implements OnInit {
 
-  constructor(private Subjects: SubjectsService, private ActivatedRouter: ActivatedRoute, private Router: Router) { }
+  constructor(private Subjects: SubjectsService,
+    private ActivatedRouter: ActivatedRoute,
+    private Router: Router,
+    private user:AuthServiceService) { }
   subjectsId: string = "";
   formSubject: FormGroup = new FormGroup({
     Name: new FormControl('', [
@@ -39,6 +43,11 @@ export class EditSubjectComponent implements OnInit {
       .subscribe(par => {
         this.Router.navigate(['/admin/mon-hoc']);
       })
+  }
+  uploadFile(item: any) {
+    console.log(item.target.files[0]); 
+    // this.imageUpload
+    // .uploadImage(item.target.files[0], `images/${this.formSubject.value.Logo}`)
   }
 
 

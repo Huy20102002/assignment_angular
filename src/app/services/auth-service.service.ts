@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
+  constructor(private http: HttpClient, private Router: Router) { }
 
-  constructor(private http: HttpClient,private Router: Router) { }
   login(email: string, googleid: string): Observable<any> {
     return this.http.get<any>(`${environment.student_api}?email=${email}&googleId=${googleid}`)
       .pipe(
@@ -23,11 +24,12 @@ export class AuthServiceService {
         })
       )
   }
-  logout(){
+  logout() {
     localStorage.removeItem("users");
     this.Router.navigate(['/login']);
   }
-  getUsers(){
-   return JSON.parse(localStorage.getItem("users") || "{}");
+  getUsers() {
+    return JSON.parse(localStorage.getItem("users") || "{}");
   }
+
 }

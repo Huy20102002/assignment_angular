@@ -1,0 +1,2 @@
+cổng chạy  
+ng serve --port 4400

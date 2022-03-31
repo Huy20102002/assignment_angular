@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
@@ -28,7 +26,6 @@ export class LoginComponent {
   login() {
   }
   googleLogin() {
-
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(resp => {
         this.auth.login(resp.email, resp.id)
