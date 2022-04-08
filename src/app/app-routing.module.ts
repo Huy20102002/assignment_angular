@@ -18,6 +18,7 @@ import { LoginComponent } from './screen/login/login.component';
 import { QuizComponent } from './screen/quiz/quiz.component';
 import { RegisterComponent } from './screen/register/register.component';
 import { SubjectsComponent } from './screen/subjects/subjects.component';
+import { AdminGuard } from './services/AdminGuard';
 import { AuthGuard } from './services/auth-guard';
 
 const routes: Routes = [
@@ -34,19 +35,19 @@ const routes: Routes = [
     path: "login", component: LoginComponent
   },
   { path: "register", component: RegisterComponent },
-  {
-    path: "admin", component: AdminlayoutComponent,
+  { 
+    path: "admin", component: AdminlayoutComponent,canActivate:[AdminGuard],
     children: [
-      { path: "", component: DashboardComponent },
-      { path: "sinh-vien", component: StudentComponent },
-      { path: "sinh-vien/add", component: AddStudentComponent },
-      { path: "sinh-vien/edit/:id", component: EditStudentComponent },
-      { path: "mon-hoc", component: SubjectComponent },
-      { path: "mon-hoc/add", component: AddSubjectComponent },
-      { path: "mon-hoc/edit/:id", component: EditSubjectComponent },
-      { path: "cau-hoi/add", component: AddQuestionComponent },
-      { path: "cau-hoi/:id", component: QuestionComponent },
-      { path: "cau-hoi/edit/:id", component: EditQuestionComponent }
+      { path: "", component: DashboardComponent,canActivate:[AdminGuard] },
+      { path: "sinh-vien", component: StudentComponent,canActivate:[AdminGuard] },
+      { path: "sinh-vien/add", component: AddStudentComponent,canActivate:[AdminGuard] },
+      { path: "sinh-vien/edit/:id", component: EditStudentComponent,canActivate:[AdminGuard] },
+      { path: "mon-hoc", component: SubjectComponent,canActivate:[AdminGuard] },
+      { path: "mon-hoc/add", component: AddSubjectComponent,canActivate:[AdminGuard] },
+      { path: "mon-hoc/edit/:id", component: EditSubjectComponent,canActivate:[AdminGuard] },
+      { path: "cau-hoi/add/:id", component: AddQuestionComponent,canActivate:[AdminGuard] },
+      { path: "cau-hoi/:id", component: QuestionComponent,canActivate:[AdminGuard] },
+      { path: "cau-hoi/edit/:code/:id", component: EditQuestionComponent,canActivate:[AdminGuard] }
     ]
   },
 

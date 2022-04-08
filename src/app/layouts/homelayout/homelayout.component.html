@@ -14,10 +14,10 @@
                     <p class="">Xin chào, <span class="font-monospace">{{name}}</span></p>
                 </li>
                 <li class="nav-item ">
-                    <img src="https://facevip68.com/assets/images/avatar.jpg" width="40" class="rounded" alt="">
+                    <img src="{{user.avatar}}" width="40" class="rounded" alt="">
                 </li>
                 <li class="nav-item">
-                    <p (click)="logout()"class="logout nav-link text-primary">Đăng Xuất</p>
+                    <a (click)="logout()"class="logout nav-link text-primary">Đăng Xuất</a>
                 </li>
 
             </ul>

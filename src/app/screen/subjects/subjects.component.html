@@ -6,7 +6,7 @@
             <div class="card-body">
               <h5 class="card-title">{{item.Name}}</h5>
               <p class="card-text">{{item.Code}}</p>
-              <a routerLink="/quiz/{{item.Code}}" class="btn btn-primary">Tham Gia</a>
+              <a routerLink="/quiz/{{item.Code}}" (click)="startQuizs(item.Code,item.Name)" class="btn btn-primary">Tham Gia</a>
             </div>
           </div>
           <br>

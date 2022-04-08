@@ -2,53 +2,38 @@
     <div class="title">
         <h3>Thêm câu hỏi</h3>
     </div>
-    {{formQuestions.value|json}}
-    <form [formGroup]="formQuestions" (submit)="addQuestions()">
+    <form [formGroup]="formQuestions">
         <div class="mb-3">
             <label for="" class="">Tên Câu hỏi</label>
             <input type="text" formControlName="Text" class="form-control">
         </div>
-        <div *ngIf="formQuestions.controls['Text'].invalid &&(formQuestions.controls['Text'].touched || formQuestions.controls['Text'].dirty)">
+        <div
+            *ngIf="formQuestions.controls['Text'].invalid &&(formQuestions.controls['Text'].touched || formQuestions.controls['Text'].dirty)">
             <span class="text-danger" *ngIf="formQuestions.controls['Text'].errors?.['required']">
                 Hãy nhập tên câu hỏi
             </span>
         </div>
+   
+        <input type="hidden" formControlName="AnswerId" [ngModel]="selectIdAnswer">
+    </form>
+    <div class="mb-3 ">
+        <label for="" class="">Đáp án
+            <button class="btn btn-success ml-3" (click)="addFormQuestion()">Thêm đáp án</button>
+        </label>
         <div class="mb-3">
-            <label for="" class="">Điểm</label>
-            <input type="number" formControlName="Marks" class="form-control">
-        </div>
-        <div *ngIf="formQuestions.controls['Marks'].invalid &&(formQuestions.controls['Marks'].touched || formQuestions.controls['Marks'].dirty)">
-            <span class="text-danger" *ngIf="formQuestions.controls['Marks'].errors?.['required']">
-                Hãy nhập Điểm
-            </span>
-        </div>
-        <div class="mb-3 ">
-            <label for="" class="">Đáp án
-                <button class="btn btn-success ml-3" (click)="addFormQuestion()">Thêm đáp án</button>
-            </label>
-            <div class="mb-3">
+            <ng-container *ngFor="let item of formhtml;index as i">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <input type="radio" aria-label="Checkbox for following text input"  name="radio">
+                            <input type="radio" (change)="selectAnswer(i+1)" aria-label="Checkbox for following text input" name="radio">
                         </div>
                     </div>
-                    <input type="text" class="form-control" formControlName="Answer" aria-label="Text input with checkbox">
+                    <input type="text" class="form-control" [(ngModel)]="Text[i]"  aria-label="Text input with checkbox">
                 </div>
-                <div *ngIf="formQuestions.controls['Answer'].invalid &&(formQuestions.controls['Answer'].touched || formQuestions.controls['Answer'].dirty)">
-                    <span class="text-danger" *ngIf="formQuestions.controls['Answer'].errors?.['required']">
-                        Hãy nhập đáp án
-                    </span>
-                </div>
-                <ng-container *ngFor="let item of formhtml">
-                    <div [innerHTML]="item | innerHtml">
-                        {{item}}
-                    </div>
-                </ng-container>
-            </div>
+            </ng-container>
         </div>
-        <div class="mb-3">
-            <button [disabled]="formQuestions.invalid" class="btn btn-primary">Thêm</button>
-        </div>
-    </form>
+    </div>
+    <div class="mb-3">
+        <button [disabled]="formQuestions.invalid" (click)="addQuestions()" class="btn btn-primary">Thêm</button>
+    </div>
 </div>

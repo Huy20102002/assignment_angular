@@ -35,12 +35,6 @@ export class AddStudentComponent implements OnInit {
     email: new FormControl('',[
       Validators.required,
       Validators.email
-    ]),
-    gender: new FormControl('',[
-      Validators.required
-    ]),
-    birthday: new FormControl('',[
-      Validators.required
     ])
   })
   addStudent() {

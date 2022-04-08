@@ -3,19 +3,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SubjectsService } from 'src/app/services/subjects.service';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-edit-subject',
   templateUrl: './edit-subject.component.html',
   styleUrls: ['./edit-subject.component.css']
 })
+
 export class EditSubjectComponent implements OnInit {
 
   constructor(private Subjects: SubjectsService,
     private ActivatedRouter: ActivatedRoute,
-    private Router: Router,
-    private user:AuthServiceService) { }
+    private Router: Router) { }
+  public imageDisplay = '';
   subjectsId: string = "";
+  pathFile: string = "";
   formSubject: FormGroup = new FormGroup({
     Name: new FormControl('', [
       Validators.required,
@@ -28,7 +31,9 @@ export class EditSubjectComponent implements OnInit {
     ])
   })
   ngOnInit(): void {
-
+    this.getSubject();
+  }
+  getSubject(){
     this.ActivatedRouter.params.subscribe(par => {
       const { id } = par;
       this.subjectsId = id;
@@ -38,17 +43,20 @@ export class EditSubjectComponent implements OnInit {
         })
     })
   }
+  // upload($event: any) {
+  //   this.pathFile = $event.target.files[0];
+  // }
+
   editSubject() {
+    // Upload ảnh:
+    
     this.Subjects.updateSubject(this.formSubject.value, this.subjectsId)
       .subscribe(par => {
         this.Router.navigate(['/admin/mon-hoc']);
       })
   }
-  uploadFile(item: any) {
-    console.log(item.target.files[0]); 
-    // this.imageUpload
-    // .uploadImage(item.target.files[0], `images/${this.formSubject.value.Logo}`)
-  }
+
+
 
 
 }

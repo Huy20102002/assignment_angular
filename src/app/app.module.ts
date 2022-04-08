@@ -27,9 +27,8 @@ import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from '
 import { environment } from 'src/environments/environment';
 import { InnerHtmlPipe } from './untils/inner-html.pipe';
 import { ShufflePipe } from './untils/shuffle.pipe';
-
-
-
+import { TrimPipe } from './untils/trim.pipe';
+import { CheckScorePipe } from './untils/check-score.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +53,8 @@ import { ShufflePipe } from './untils/shuffle.pipe';
     AdminlayoutComponent,
     InnerHtmlPipe,
     ShufflePipe,
+    TrimPipe,
+    CheckScorePipe,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +64,7 @@ import { ShufflePipe } from './untils/shuffle.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-    
+
   ],
   providers: [
     {

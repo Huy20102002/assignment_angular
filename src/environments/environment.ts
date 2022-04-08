@@ -5,10 +5,11 @@ const BaseUrlApi = "http://localhost:3001";
 export const environment = {
   production: false,
   GOOGLE_CLIENT_ID: "442140625921-2f3r7qj6i050m8khhp8u53a3ncc4hpj7.apps.googleusercontent.com",
-  student_api: `${BaseUrlApi}/users`,
+  user_api: `${BaseUrlApi}/users`,
   subjects_api: `${BaseUrlApi}/subjects`,
   questions_api: `${BaseUrlApi}`,
-  startquiz_api: `${BaseUrlApi}/startquiz`,
+  Mark_Quiz: `${BaseUrlApi}/StudentQuizs`,
+  Start_Quiz: `${BaseUrlApi}/startquizs`,
   firebaseConfig: {
     apiKey: "AIzaSyBb2AVrdUmt5PnEsuQ4QtF0XCIuEgK3j3U",
     authDomain: "quizonline-b1908.firebaseapp.com",

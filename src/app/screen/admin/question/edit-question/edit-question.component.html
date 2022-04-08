@@ -2,41 +2,53 @@
     <div class="title">
         <h3>Cập nhật câu hỏi</h3>
     </div>
-    <form [formGroup]="formQuestions" (submit)="addQuestions()">
+    <form [formGroup]="formQuestions" >
         <div class="mb-3">
             <label for="" class="">Tên Câu hỏi</label>
-            <input type="text" class="form-control">
+            <input type="text" formControlName="Text" class="form-control">
         </div>
+        <div
+            *ngIf="formQuestions.controls['Text'].invalid &&(formQuestions.controls['Text'].touched || formQuestions.controls['Text'].dirty)">
+            <span class="text-danger" *ngIf="formQuestions.controls['Text'].errors?.['required']">
+                Hãy nhập tên câu hỏi
+            </span>
+        </div>
+      
+        <input type="hidden" formControlName="AnswerId" [ngModel]="selectIdAnswer">
+    </form>
+    <div class="mb-3 ">
+        <label for="" class="">Đáp án
+            <button class="btn btn-success ml-3" (click)="updateFormQuestion()">Thêm đáp án</button>
+        </label>
         <div class="mb-3">
-            <label for="" class="">Điểm</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="mb-3 ">
-            <label for="" class="">Đáp án
-                <button class="btn btn-success ml-3" (click)="updateFormQuestion()">Thêm đáp án</button>
-            </label>
-            <div class="mb-3">
+            <ng-container *ngFor="let value of getAnswer; index as j">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <input type="radio" aria-label="Checkbox for following text input" name="radio">
+                            <input type="radio" [checked]="value.id == correct"   (change)="selectAnswer(j+1)"  aria-label="Checkbox for following text input" name="radio">
                         </div>
                     </div>
-                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    <input type="text" class="form-control" [(ngModel)]="value.Text"  aria-label="Text input with checkbox">
+                   <span class="input-group-text removequestion" (click)="removeinputQuestion(value.id)" id="basic-addon1"><i class="fas fa-times-circle"></i></span>
                 </div>
-                <ng-container *ngFor="let item of formhtml">
-                    <div [innerHTML]="item | innerHtml">
-                        {{item}}
+                
+            </ng-container>
+        </div>
+        <div class="mb-3">
+        <ng-container *ngFor="let item of formhtml;index as i">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="radio" (change)="selectAnswer(i+1)"  aria-label="Checkbox for following text input" name="radio">
                     </div>
-                </ng-container>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="Text[i]"  aria-label="Text input with checkbox">
+
             </div>
+        </ng-container>
         </div>
-        <div class="mb-3">
-            <label for="" class="">Đáp án đúng</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-            <button class="btn btn-primary">Lưu</button>
-        </div>
-    </form>
+    </div>
+    <div class="mb-3">
+        <button [disabled]="formQuestions.invalid" (click)="editQuestion()" class="btn btn-primary">Lưu</button>
+    </div>
 </div>

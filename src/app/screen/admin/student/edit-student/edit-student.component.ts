@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,9 +10,17 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class EditStudentComponent implements OnInit {
 
-  constructor(private getStudent: StudentService, private router: ActivatedRoute) { }
+  constructor(private StudentService: StudentService, private router: ActivatedRoute) { }
   
   formStudent: FormGroup = new FormGroup({
+    
+    name: new FormControl('',[
+      Validators.required
+    ]),
+    email: new FormControl('',[
+      Validators.required,
+      Validators.email
+    ]),
     username: new FormControl('',[
       Validators.required
     ]),
@@ -21,31 +28,24 @@ export class EditStudentComponent implements OnInit {
       Validators.required,
       Validators.minLength(6)
     ]),
-    fullname: new FormControl('',[
-      Validators.required
-    ]),
-    email: new FormControl('',[
-      Validators.required,
-      Validators.email
-    ]),
-    gender: new FormControl('',[
-      Validators.required
-    ]),
-    birthday: new FormControl('',[
-      Validators.required
-    ])
+   
   })
   ngOnInit(): void {
+    this.getStudent();
+  }
+  getStudent(){
     this.router.params.subscribe(par=>{
       const {id} = par;
-      this.getStudent.getIdStudent(id)
+      this.StudentService.getIdStudent(id)
       .subscribe(res=>{
-       
+        this.formStudent.patchValue(res)
+        console.log(res);
        })
     })
   }
   updateStudent(){
     // this.getStudent.updateStudent()
+    console.log(2)
   }
 
 }

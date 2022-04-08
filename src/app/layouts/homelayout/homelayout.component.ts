@@ -8,11 +8,12 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class HomelayoutComponent implements OnInit {
   constructor(private Auth: AuthServiceService) { }
   name: string = "";
-  
+  user: any;
   ngOnInit(): void {
 
     const data = this.Auth.getUsers();
-    const { name } = data[0];
+    this.user = data;
+    const { name } = data;
     this.name = name;
   }
   logout() {

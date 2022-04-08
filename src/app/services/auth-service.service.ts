@@ -10,17 +10,43 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthServiceService {
   constructor(private http: HttpClient, private Router: Router) { }
-
-  login(email: string, googleid: string): Observable<any> {
-    return this.http.get<any>(`${environment.student_api}?email=${email}&googleId=${googleid}`)
+  datagoogle: any;
+  login(email: string, googleid: string, name: string, photoUrl: string): Observable<any> {
+    return this.http.get<any>(`${environment.user_api}?email=${email}&googleId=${googleid}`)
       .pipe(
         map((item) => {
           if (item.length > 0) {
-            localStorage.setItem("users", JSON.stringify(item));
-            this.Router.navigate(['/']);
+            localStorage.setItem("users", JSON.stringify(item[0]));
+            if (item[0].roles == "admin") {
+              this.Router.navigate(['/admin']);
+            } else {
+              this.Router.navigate(['/']);
+            }
             return item[0];
+          } else {
+
+            return this.http.post<any>(`${environment.user_api}`, {
+              "name": name,
+              "email": email,
+              "googleId": googleid,
+              "avatar": photoUrl,
+              "roles": "member",
+              "StudentQuizs": []
+            }).subscribe(data => {
+              localStorage.setItem("users", JSON.stringify({
+                "id": data.id,
+                "name": name,
+                "email": email,
+                "googleId": googleid,
+                "avatar": photoUrl,
+                "roles": "member",
+                "StudentQuizs": []
+
+              }));
+              this.Router.navigate(['/']);
+
+            })
           }
-          return null;
         })
       )
   }
@@ -30,6 +56,9 @@ export class AuthServiceService {
   }
   getUsers() {
     return JSON.parse(localStorage.getItem("users") || "{}");
+  }
+  insertGoogle(post: any): Observable<any> {
+    return this.http.post<any>(`${environment.user_api}`, post)
   }
 
 }

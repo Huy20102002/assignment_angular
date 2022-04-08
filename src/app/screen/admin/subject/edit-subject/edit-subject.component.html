@@ -1,4 +1,4 @@
-<div class="row row-sm-3">
+<div class="row row-sm-3"  >
     <div class="title">
         <h3>Cập Nhật Môn Học</h3>
     </div>
@@ -26,13 +26,16 @@
         </div>
         <div class="mb-3">
             <label for="" class="">Image</label>
-            <input type="file" formControlName="Logo" (change)="uploadFile($event)" class="form-control">
+            <input type="file" formControlName="Logo"  class="form-control">
         </div>
         <div
             *ngIf="formSubject.controls['Logo'].invalid &&(formSubject.controls['Logo'].touched || formSubject.controls['Logo'].dirty)">
             <span class="text-danger" *ngIf="formSubject.controls['Logo'].errors?.['required']">
                 Hãy nhập ảnh
             </span>
+        </div>
+        <div class="mb-3">
+        <img [src]="imageDisplay"  width="150">
 
         </div>
         <div class="mb-3">

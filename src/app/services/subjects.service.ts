@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { concatMap, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -31,4 +31,5 @@ export class SubjectsService {
   updateSubject(data:any,id:any): Observable<any>{
     return this.http.put<any>(`${environment.subjects_api}/${id}`,data);
   }
+
 }

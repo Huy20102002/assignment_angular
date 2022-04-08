@@ -4,15 +4,15 @@
             <div class="profile">
                 <div class=" d-flex flex-row p-4 pt-3">
                     <div class="profile_img">
-                        <img src="https://facevip68.com/assets/images/avatar.jpg" class="rounded " width="100" alt="">
+                        <img src="{{user.avatar}}" class="rounded " width="100" alt="">
                     </div>
                     <div class="profile_name ml-3">
-                        <span class="text-success fs-5">Admin <i class="fa fa-check text-success"></i></span>
+                        <span class="text-success fs-5">{{user.name}} <i class="fa fa-check text-success"></i></span>
                         <br>
                         <div class="email mt-2">
                             <span class="text-warning">
-                                <i class="fas fa-envelope text-warning"></i> <span
-                                    class="ml-2">admin123@gmail.com</span>
+                                <i class="fas fa-envelope text-warning"></i> <a
+                                   [routerLink]="'/'+user.email" class="ml-2">{{user.email}}</a>
                             </span>
                             <span class="text-primary ml-4">
                                 <i class="fas fa-user-alt text-primary"></i> Admin
@@ -39,7 +39,7 @@
                       <div class="card">
                         <div class="card-body">
                           <h3 class="">Sinh Viên</h3>
-                          <p class="card-text">Số lượng sinh viên: 100</p>
+                          <p class="card-text">Số lượng sinh viên: {{countStudent}}</p>
                         </div>
                       </div>
                     </div>
@@ -47,7 +47,7 @@
                       <div class="card">
                         <div class="card-body">
                           <h3 class="">Môn Học</h3>
-                          <p class="card-text">Số lượng môn học: 1000</p>
+                          <p class="card-text">Số lượng môn học: {{countSubject}}</p>
                         </div>
                       </div>
                     </div>

@@ -14,7 +14,7 @@
             <th>Code</th>
             <th class="col-3">Hình Ảnh</th>
             <th>
-                <a routerLink="/admin/mon-hoc/add" class="btn btn-success">Thêm Môn Học</a>
+                Chức Năng
             </th>
         </tr>
         </thead>
@@ -27,7 +27,6 @@
                 <td>{{item.Logo}}</td>
                 <td>
                     <button (click)="remove(item)" class="btn btn-danger">Xóa</button>
-                    <a routerLink="/admin/mon-hoc/edit/{{item.id}}" class="btn btn-primary ml-4">Sửa</a>
                     <a routerLink="/admin/cau-hoi/{{item.Code}}" class="btn btn-success ml-4">Câu hỏi</a>
                 </td>
             </tr>

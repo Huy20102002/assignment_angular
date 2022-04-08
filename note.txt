@@ -1,2 +1,41 @@
 cổng chạy  
 ng serve --port 4400
+
+    // console.log(this.StarQuiz.Id_Code);
+    // const data = this.users.getUsers();
+    // let indx = -1;
+    // // Tìm kiếm id trong question
+    // this.user_select_answer.forEach((el, index) => {
+    //   if (el.Id_Question == idQuestion) {
+    //     indx = index;
+    //     return;
+    //   }
+    // });
+    // if (indx == -1) {
+    //   this.Router.params.subscribe(par => {
+    //     const { id } = par;
+    //     this.StarQuiz.Id_User = data.id;
+    //     this.StarQuiz.Id_Question = idQuestion;
+    //     this.StarQuiz.Id_Answers = idAnswer;
+    //     this.StarQuiz.Id_Code = id;
+    //     const newFormStart = { ...this.StarQuiz }
+    //     this.startQuiz.StartQuiz(newFormStart)
+    //       .subscribe(data => {
+    //         this.id_Startquiz = data.id;
+    //         this.selected_quiz = data.Id_Answers;
+
+    //       })
+    //     this.user_select_answer.push(newFormStart);
+    //   })
+    // } else {
+    //   this.StarQuiz.Id_Answers = idAnswer;
+    //   const newFormStart = { ...this.StarQuiz }
+    //   this.startQuiz.Update_StartQuiz(this.id_Startquiz, newFormStart)
+    //     .subscribe(res => {
+    //       this.selected_quiz = res.Id_Answers;
+    //     })
+    // }
+    // this.startQuiz.get_startQuiz(this.id_Startquiz)
+    //   .subscribe(res => {
+    //     this.selected_quiz = res.Id_Answers;
+    //   })

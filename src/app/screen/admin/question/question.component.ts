@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { SubjectsService } from 'src/app/services/subjects.service';
 
@@ -12,13 +12,16 @@ export class QuestionComponent implements OnInit {
   questions: Array<any> = [];
   subjectsName: string = "";
   keyword: string="";
-  constructor(private question: QuestionsService, private router: ActivatedRoute, private subjects: SubjectsService) { }
+  Code:any;
+  constructor(private question: QuestionsService, private routerActived: ActivatedRoute,private router: Router, private subjects: SubjectsService) { }
   ngOnInit(): void {
+    
     this.getAllQuestion();
   }
   getAllQuestion(seachkeywork: string="") {
-    this.router.params.subscribe(res => {
+    this.routerActived.params.subscribe(res => {
       const { id } = res;
+      this.Code = id;
       this.question.getAll(id,seachkeywork)
         .subscribe(data => {
           this.questions = data;
@@ -33,5 +36,14 @@ export class QuestionComponent implements OnInit {
   searchQuestion(){
     this.getAllQuestion(this.keyword);
   }
-
+   removeQuestion(code:any,id:any){
+    const confirm = window.confirm("Bạn có muốn xóa câu hỏi này ?");
+    if(confirm){
+      this.question.removeQuestion(code,id)
+      .subscribe(res=>{
+        this.questions = this.questions.filter(item=>item.id !=id)
+      })
+    }
+  
+   }
 }

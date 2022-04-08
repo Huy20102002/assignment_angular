@@ -13,6 +13,7 @@ export class LoginComponent {
     private authService: SocialAuthService,
     private auth: AuthServiceService) { }
   loginform: Array<any> = [];
+  datagoole: any;
   formlogin: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -23,16 +24,20 @@ export class LoginComponent {
       Validators.minLength(6)
     ])
   });
+  ngOnInit(): void {
+  }
   login() {
   }
   googleLogin() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(resp => {
-        this.auth.login(resp.email, resp.id)
+        this.auth.login(resp.email, resp.id, resp.name,resp.photoUrl)
           .subscribe(data => {
+          
           })
       })
   }
+
 
 
 }

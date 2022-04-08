@@ -5,22 +5,22 @@
         <div class="container bg-white  border-bottom ">
             <div class="d-flex flex-row justify-content-between align-items-center mcq">
                 <h4>Quiz 1 :</h4>
-                <h4>Thời gian: {{counter}}P</h4>
-                <span> <button (click)="final()" class="btn btn-success">Hoàn thành bài thi</button></span>
+                <h4>Thời gian: {{counter}} Phút</h4>
+                <span> <button (click)="final()"  class="btn btn-success">Hoàn thành bài thi</button></span>
             </div>
         </div>
         <div class="container  my-1 m-auto ">
-            <span class="m-auto ">({{currentQuestion+1}} of {{quiz.length}})</span>
+            <span class="m-auto col-6">Câu: {{currentQuestion+1}} - {{quiz.length}}</span>
             <div class="question ml-sm-5 pl-sm-5 pt-2">
                 <div class="py-2 h5">
-                    <b>{{quiz[currentQuestion]?.Text }}</b>
+                    <b>{{quiz[currentQuestion]?.Text |trim}}</b>
                 </div>
                 <br>
-                <div class=" ml-sm-3 pl-md-5 pt-sm-0 pt-3 row justify-content-between" id="options">
-                    <ng-container *ngFor="let item of quiz[currentQuestion]?.Answers ">
-                        <div class="col-sm-6 ">
-                            <label class="options">{{item.Text}}    
-                                <input type="radio" name="radio"> <span class="checkmark"></span>
+                <div class=" ml-sm-3 pl-md-5 pt-sm-0 pt-3  " id="options">
+                    <ng-container *ngFor="let item of quiz[currentQuestion]?.Answers">
+                        <div class="col-sm-6">
+                            <label class="options mb-3 justify-content-between">{{item.Text}}  
+                                <input type="radio" [checked]="user_select_answer[currentQuestion]?.idAnswer == item.id"   (change)="selectAnswers(item.id,quiz[currentQuestion].id)"  [name]="quiz[currentQuestion].id"> <span class="checkmark"></span>
                             </label>
                         </div>
                     </ng-container>
