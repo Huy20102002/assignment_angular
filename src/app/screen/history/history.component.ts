@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -8,16 +9,17 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor(private UserService: AuthServiceService) { }
-  history:any;
-  name:any;
+  constructor(private UserService: AuthServiceService,private title: Title) { }
+  history: any;
+  name: any;
   ngOnInit(): void {
-  this.getUser();
+    this.title.setTitle("Trang lịch sử làm bài")
+    this.getUser();
   }
-  getUser(){
-   const data= this.UserService.getUsers(); 
-   this.name = data.name;
-   this.history = data.StudentQuizs;
+  getUser() {
+    const data = this.UserService.getUsers();
+    this.name = data.name;
+    this.history = data.StudentQuizs;
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 
@@ -10,7 +11,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class EditQuestionComponent implements OnInit {
 
-  constructor(private QuestionService: QuestionsService, private RouterActivied: ActivatedRoute, private router: Router) { }
+  constructor(private QuestionService: QuestionsService, private RouterActivied: ActivatedRoute, private router: Router,private title:Title) { }
 
   input: string = ``;
   select_answer: Array<any> = [];
@@ -31,7 +32,11 @@ export class EditQuestionComponent implements OnInit {
     AnswerId: new FormControl(),
     Answers: new FormControl([])
   })
-  ngOnInit(): void { this.getQuestion() }
+  ngOnInit(): void { 
+    this.getQuestion();
+    this.title.setTitle("Trang Cập nhật câu hỏi")
+
+  }
   updateFormQuestion() {
     this.formhtml.push(this.input);
   }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule ,Title} from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -93,7 +93,8 @@ import { HistoryComponent } from './screen/history/history.component';
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    Title
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "huybtph14352@fpt.edu.vn",
-      "password": "$2a$10$uoVvnOvkrPeyrs581fWPmeRimlnQ/KWTJt747l/tSWlMvcqRbZKh6",
+      "password": "$2a$10$19HMoI3QLaQ4U1ebN4bQtu/m/0LdgwOgyhxLAdnvP5kww1NYiod0i",
       "name": "Bùi Tiến Huy PH1 4 3 5 2",
       "googleId": "108082186174090804440",
       "avatar": "https://lh3.googleusercontent.com/a/AATXAJyq4zX4f5BHsWfaw-duflPYFMAj5pLyDUiSIDgN=s96-c",
@@ -12,7 +12,7 @@
           "Code": "ADAV",
           "NameSubject": "Lập trình Android nâng cao",
           "Mark": 2,
-          "Start_Time": "Mon Apr 11 2022 09:57:58 GMT+0700 (Giờ Đông Dương)",
+          "Start_Time": "Mon Apr 11 2022 16:24:26 GMT+0700 (Giờ Đông Dương)",
           "End_Time": "Mon Apr 11 2022 09:56:47 GMT+0700 (Giờ Đông Dương)"
         },
         {
@@ -44,6 +44,13 @@
       "roles": "member",
       "StudentQuizs": [],
       "id": 3
+    },
+    {
+      "email": "bhuy20102002@gmail.com",
+      "password": "$2a$10$ophATgEosxiALTonF7gH3OJODhExpIit9yv55jEx.MP..HDRX.K/.",
+      "username": "huy20102002",
+      "name": "Bùi Huy",
+      "id": 4
     }
   ],
   "subjects": [

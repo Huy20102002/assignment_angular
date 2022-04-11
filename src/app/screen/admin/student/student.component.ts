@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { StudentService } from 'src/app/services/student.service';
 import Swal from 'sweetalert2';
 
@@ -11,8 +12,9 @@ import Swal from 'sweetalert2';
 export class StudentComponent implements OnInit {
   students: Array<any> = [];
   keyword: string= "";
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService,private title: Title) { }
   ngOnInit(): void {
+    this.title.setTitle("Trang Danh Sách Sinh Viên");
     this.getStudent();
   }
   getStudent(seachkeywork: string="") {

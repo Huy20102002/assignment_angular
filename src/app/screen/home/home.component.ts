@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { StudentService } from 'src/app/services/student.service';
@@ -16,8 +17,10 @@ export class HomeComponent implements OnInit {
   email: string = "";
   user: any;
   StudentQuiz: any;
-  constructor(private subjects: SubjectsService, private router: Router, private auth: AuthServiceService,private StudentService:StudentService) { }
+  constructor(private title:Title,private subjects: SubjectsService, private router: Router, private auth: AuthServiceService,private StudentService:StudentService) { }
   ngOnInit(): void {
+    this.title.setTitle("Trang Chủ")
+
     this.subjects.getSubject()
       .subscribe(res => {
         this.subject = res;

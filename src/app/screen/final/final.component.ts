@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { StudentService } from 'src/app/services/student.service';
@@ -10,11 +11,12 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class FinalComponent implements OnInit {
 
-  constructor(private StudentService: StudentService, private User: AuthServiceService, private ActiveRouter: ActivatedRoute) { }
+  constructor(private StudentService: StudentService, private User: AuthServiceService, private ActiveRouter: ActivatedRoute,private title:Title) { }
   result: any;
   info: any;
   Code: any;
   ngOnInit(): void {
+    this.title.setTitle("Trang Kết Quả")
     this.getResult();
   }
   getResult() {

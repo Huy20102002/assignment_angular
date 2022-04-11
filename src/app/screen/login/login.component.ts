@@ -5,6 +5,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,8 @@ export class LoginComponent {
     private authService: SocialAuthService,
     private auth: AuthServiceService,
     private Router: Router,
-    private Toastr: ToastrService
+    private Toastr: ToastrService,
+    private title: Title
     ) { }
   loginform: Array<any> = [];
   datagoole: any;
@@ -32,12 +34,13 @@ export class LoginComponent {
     ])
   });
   ngOnInit(): void {
+    this.title.setTitle("Trang Đăng Nhập")
+
   }
   login() {
-  
     this.LoginService.login(this.formlogin.value)
       .subscribe(res => {
-          const {user} =res;
+          const { user } =res;
           localStorage.setItem("users", JSON.stringify(user))
           if (user.roles == "admin") {
             Swal.fire(
@@ -56,6 +59,7 @@ export class LoginComponent {
             )
           }
       })
+      
   }
   googleLogin() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)

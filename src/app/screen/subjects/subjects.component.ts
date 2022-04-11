@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { StartQuizService } from 'src/app/services/start-quiz.service';
 import { StudentService } from 'src/app/services/student.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
@@ -12,7 +13,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class SubjectsComponent implements OnInit {
 
   constructor(private http: HttpClient, private Router: ActivatedRoute, private users: AuthServiceService,
-    private startQuiz: StartQuizService, private StudentService: StudentService) { }
+   private StudentService: StudentService,private title: Title) { }
   Subject: Array<any> = [];
   formQuiz: any = {
     Code: "",
@@ -25,6 +26,7 @@ export class SubjectsComponent implements OnInit {
   Students: Array<any> = [];
   StudentQuizs:any;
   ngOnInit(): void {
+    this.title.setTitle("Trang Môn Học")
     this.http.get<any>("http://localhost:3001/subjects")
       .subscribe(data => {
         this.Subject = data;

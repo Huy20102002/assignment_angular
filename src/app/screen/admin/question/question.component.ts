@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { SubjectsService } from 'src/app/services/subjects.service';
@@ -13,9 +14,10 @@ export class QuestionComponent implements OnInit {
   subjectsName: string = "";
   keyword: string = "";
   Code: any;
-  constructor(private question: QuestionsService, private routerActived: ActivatedRoute, private router: Router, private subjects: SubjectsService) { }
+  constructor(private question: QuestionsService, private routerActived: ActivatedRoute, private router: Router,
+     private subjects: SubjectsService,private title: Title) { }
   ngOnInit(): void {
-
+    this.title.setTitle("Trang Câu Hỏi")
     this.getAllQuestion();
   }
   getAllQuestion(seachkeywork: string = "") {

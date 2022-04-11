@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -10,7 +11,7 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class EditStudentComponent implements OnInit {
 
-  constructor(private StudentService: StudentService, private router: ActivatedRoute) { }
+  constructor(private StudentService: StudentService, private router: ActivatedRoute,private title: Title) { }
   
   formStudent: FormGroup = new FormGroup({
     
@@ -31,6 +32,7 @@ export class EditStudentComponent implements OnInit {
    
   })
   ngOnInit(): void {
+    this.title.setTitle("Trang Cập Nhật Sinh Viên");
     this.getStudent();
   }
   getStudent(){

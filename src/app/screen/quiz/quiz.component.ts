@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class QuizComponent implements OnInit {
 
   constructor(private users: AuthServiceService, private quizs: QuestionsService,
-    private Router: ActivatedRoute, private RouterNavigate: Router, private StudentService: StudentService) { }
+    private Router: ActivatedRoute, private RouterNavigate: Router, private StudentService: StudentService,private title:Title) { }
   quiz: Array<any> = [];
   subjectName: string = "";
   question_count = 0;
@@ -38,6 +39,7 @@ export class QuizComponent implements OnInit {
   }
   Codetitle: any;
   ngOnInit(): void {
+    this.title.setTitle("Trang Làm Quiz")
     this.getQuiz();
   }
   getQuiz() {

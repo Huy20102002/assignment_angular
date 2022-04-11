@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
 
-  constructor(private AuthService: AuthServiceService,private Router: Router,private Toastr: ToastrService) { }
+  constructor(private AuthService: AuthServiceService,private Router: Router,private Toastr: ToastrService,private title: Title) { }
   arrRegister: Array<any> = [];
   formRegister: FormGroup = new FormGroup({
     name: new FormControl("", [
@@ -29,6 +30,10 @@ export class RegisterComponent {
     StudentQuizs: new FormControl([])
     
   })
+  ngOnInit(): void {
+    this.title.setTitle("Trang Đăng Ký")
+
+  }
   register() {
     this.AuthService.register(this.formRegister.value)
       .subscribe(data => {
