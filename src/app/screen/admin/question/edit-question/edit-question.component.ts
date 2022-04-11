@@ -12,15 +12,7 @@ export class EditQuestionComponent implements OnInit {
 
   constructor(private QuestionService: QuestionsService, private RouterActivied: ActivatedRoute, private router: Router) { }
 
-  input: string = `<div class="input-group mb-3">
-  <div class="input-group-prepend">
-      <div class="input-group-text">
-          <input type="radio" aria-label="Checkbox for following text input"  name="radio">
-      </div>
-  </div>
-  <input type="text" class="form-control" aria-label="Text input with checkbox">
-</div>
-  `;
+  input: string = ``;
   select_answer: Array<any> = [];
   formhtml: Array<any> = [];
   selectIdAnswer: any;
@@ -28,7 +20,7 @@ export class EditQuestionComponent implements OnInit {
   id: any;
   getAnswer: any;
   idAnswer: any;
-  correct:any;
+  correct: any;
   formQuestions: FormGroup = new FormGroup({
     Text: new FormControl('', [
       Validators.required
@@ -100,5 +92,9 @@ export class EditQuestionComponent implements OnInit {
           })
       })
     }
+  }
+  removeinputnew(id: any) {
+    console.log(this.formhtml[id]);
+    this.formhtml = this.formhtml.filter(item => item[id] == id);
   }
 }

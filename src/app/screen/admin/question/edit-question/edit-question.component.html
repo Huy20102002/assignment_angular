@@ -25,7 +25,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <input type="radio" [checked]="value.id == correct"   (change)="selectAnswer(j+1)"  aria-label="Checkbox for following text input" name="radio">
+                            <input type="radio" [checked]="value.id == correct"   (change)="selectAnswer(value.id)"  aria-label="Checkbox for following text input" name="radio">
                         </div>
                     </div>
                     <input type="text" class="form-control" [(ngModel)]="value.Text"  aria-label="Text input with checkbox">
@@ -43,6 +43,7 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" [(ngModel)]="Text[i]"  aria-label="Text input with checkbox">
+                <span class="input-group-text removequestion" (click)="removeinputnew(i)" id="basic-addon1"><i class="fas fa-times-circle"></i></span>
 
             </div>
         </ng-container>

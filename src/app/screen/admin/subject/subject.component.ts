@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SubjectsService } from 'src/app/services/subjects.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-subject',

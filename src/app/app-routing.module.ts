@@ -13,6 +13,7 @@ import { AddSubjectComponent } from './screen/admin/subject/add-subject/add-subj
 import { EditSubjectComponent } from './screen/admin/subject/edit-subject/edit-subject.component';
 import { SubjectComponent } from './screen/admin/subject/subject.component';
 import { FinalComponent } from './screen/final/final.component';
+import { HistoryComponent } from './screen/history/history.component';
 import { HomeComponent } from './screen/home/home.component';
 import { LoginComponent } from './screen/login/login.component';
 import { QuizComponent } from './screen/quiz/quiz.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: "mon-hoc", component: SubjectsComponent,canActivate:[AuthGuard]},
       { path: "quiz/:id", component: QuizComponent,canActivate:[AuthGuard]},
       { path: "quiz/:id/ket-qua", component: FinalComponent,canActivate:[AuthGuard]},
+      {path: "history",component:HistoryComponent,canActivate:[AuthGuard]}
     ]
   },
   {

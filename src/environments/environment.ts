@@ -10,15 +10,17 @@ export const environment = {
   questions_api: `${BaseUrlApi}`,
   Mark_Quiz: `${BaseUrlApi}/StudentQuizs`,
   Start_Quiz: `${BaseUrlApi}/startquizs`,
-  firebaseConfig: {
-    apiKey: "AIzaSyBb2AVrdUmt5PnEsuQ4QtF0XCIuEgK3j3U",
-    authDomain: "quizonline-b1908.firebaseapp.com",
-    dataBaseUrl: "https://quizonline-b1908-default-rtdb.firebaseio.com/",
-    projectId: "quizonline-b1908",
-    storageBucket: "quizonline-b1908.appspot.com",
-    messagingSenderId: "52314679027",
-    appId: "1:52314679027:web:20bb69dde4b344a5377986",
-    measurementId: "G-XDRVMYKBEH"
+  signin_api: `${BaseUrlApi}/signin`,
+  signup_api: `${BaseUrlApi}/signup`,
+  firebaseConfig : {
+    apiKey: "AIzaSyD8Ftq85G42EQMmuCA4QAWEfCRXz-TUc_Q",
+    authDomain: "empirical-oven-330915.firebaseapp.com",
+    databaseURL: "https://empirical-oven-330915-default-rtdb.firebaseio.com/",
+    projectId: "empirical-oven-330915",
+    storageBucket: "empirical-oven-330915.appspot.com",
+    messagingSenderId: "588763504041",
+    appId: "1:588763504041:web:83a6da37f260f563c9b8b8",
+    measurementId: "G-0X2WTHTBYM"
   }
 };
 

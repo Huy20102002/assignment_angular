@@ -5,6 +5,8 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { StartQuizService } from 'src/app/services/start-quiz.service';
 import { StudentService } from 'src/app/services/student.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -36,14 +38,15 @@ export class QuizComponent implements OnInit {
     Id_Answers: [],
     Id_Code: ""
   }
-
-
+  Codetitle: any;
   ngOnInit(): void {
     this.getQuiz();
   }
   getQuiz() {
     this.Router.params.subscribe(par => {
       const { id } = par;
+      console.log(id);
+      this.Codetitle = id;
       this.quizs.getQuestion(id)
         .subscribe(res => {
           let arr = <any>res;
@@ -106,11 +109,27 @@ export class QuizComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
       })
-    const confirm = window.confirm("Bạn có muốn hoàn thành bài quiz");
-    if (confirm) {
-      const FinalRouter = `quiz/${idCode}/ket-qua`;
-      this.RouterNavigate.navigate([FinalRouter]);
-    }
+
+    Swal.fire({
+      title: 'Bạn có chắc chắn nộp bài thi ?',
+      text: "Vui lòng kiểm tra lại các câu hỏi trước khi nộp bài !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Vâng tôi muốn nộp !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Nộp bài thành công!',
+          'Your file has been deleted.',
+          'success'
+        )
+        const FinalRouter = `quiz/${idCode}/ket-qua`;
+        this.RouterNavigate.navigate([FinalRouter]);
+      }
+    })
+
   }
   nextQuestion() {
     this.currentQuestion++;

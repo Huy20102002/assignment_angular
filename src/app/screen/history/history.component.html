@@ -1,0 +1,19 @@
+<div class="title">
+    <h3>Lịch Sử Làm Bài</h3>
+</div>
+<table class="table table-striped table-inverse">
+    <tr>
+        <th>STT</th>
+        <th>Họ Tên</th>
+        <th>Tên Môn</th>
+        <th>Điếm</th>
+    </tr>
+    <ng-container *ngFor="let item of history;index as i">
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{name}}</td>
+            <td>{{item.NameSubject}}</td>
+            <td>{{item.Mark}}</td>
+        </tr>
+    </ng-container>
+</table>

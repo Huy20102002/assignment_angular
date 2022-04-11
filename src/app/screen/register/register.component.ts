@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
 
-  constructor(private http: HttpClient) { }
+  constructor(private AuthService: AuthServiceService,private Router: Router,private Toastr: ToastrService) { }
   arrRegister: Array<any> = [];
   formRegister: FormGroup = new FormGroup({
     name: new FormControl("", [
@@ -22,16 +25,17 @@ export class RegisterComponent {
       Validators.required,
       Validators.minLength(6)
     ]),
-    repassword: new FormControl("", [
-      Validators.required,   
-    ])
+    roles: new FormControl("member"),
+    StudentQuizs: new FormControl([])
+    
   })
   register() {
-    this.http.post<any>("http://localhost:3001/users", this.formRegister.value)
+    this.AuthService.register(this.formRegister.value)
       .subscribe(data => {
-        console.log(data);
+        this.Router.navigate(['/login'])
+        this.Toastr.success("Đăng Ký Thành Công");
       })
-    }
+  }
 
 
 

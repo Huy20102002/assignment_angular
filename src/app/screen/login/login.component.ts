@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,8 +13,12 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class LoginComponent {
 
   constructor(
+    private LoginService: AuthServiceService,
     private authService: SocialAuthService,
-    private auth: AuthServiceService) { }
+    private auth: AuthServiceService,
+    private Router: Router,
+    private Toastr: ToastrService
+    ) { }
   loginform: Array<any> = [];
   datagoole: any;
   formlogin: FormGroup = new FormGroup({
@@ -27,13 +34,40 @@ export class LoginComponent {
   ngOnInit(): void {
   }
   login() {
+  
+    this.LoginService.login(this.formlogin.value)
+      .subscribe(res => {
+          const {user} =res;
+          localStorage.setItem("users", JSON.stringify(user))
+          if (user.roles == "admin") {
+            Swal.fire(
+              'Đăng Nhập thành công',
+              'Vui lòng click vào nút ok',
+              'success'
+            )
+            setTimeout(()=>this.Router.navigate(['/admin']),1500)
+
+          } else {
+            setTimeout(()=>this.Router.navigate(['/']),1500)
+            Swal.fire(
+              'Đăng Nhập thành công',
+              'Vui lòng click vào nút ok',
+              'success'
+            )
+          }
+      })
   }
   googleLogin() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(resp => {
-        this.auth.login(resp.email, resp.id, resp.name,resp.photoUrl)
+        this.auth.loginGoogle(resp.email, resp.id, resp.name, resp.photoUrl)
           .subscribe(data => {
-          
+            Swal.fire(
+              'Đăng Nhập thành công',
+              'Vui lòng click vào nút ok',
+              'success'
+            )
+
           })
       })
   }

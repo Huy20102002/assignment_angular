@@ -37,17 +37,7 @@
                         Hãy nhập password 6 chữ số trở lên
                     </span>
                 </div>
-                <div class="mb-3">
-                    <label for="repassword">Nhập lại mật khẩu</label>
-                    <input type="password" id="repassword" class="form-control" formControlName="repassword" placeholder="nhập lại password...">
-                </div>
-                <div *ngIf="formRegister.controls['repassword'].invalid &&(formRegister.controls['repassword'].touched || formRegister.controls['repassword'].dirty)">
-                                 
-                    <span class="text-danger" *ngIf="formRegister.controls['repassword'].errors?.['required']">
-                        Hãy nhập password
-                    </span>
-                 
-                </div>
+             
                 <div class="login-container-form-btn">
                     <div class="bb-login-form-btn">
                         <div  class="bb-form-bgbtn"></div> <button [disabled]="formRegister.invalid" class="bb-form-btn"> Đăng Ký </button>

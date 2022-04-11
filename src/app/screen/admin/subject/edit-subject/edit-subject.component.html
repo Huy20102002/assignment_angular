@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="" class="">CODE</label>
-            <input type="text" formControlName="Code" class="form-control">
+            <input type="text"  formControlName="Code" class="form-control">
         </div>
         <div
             *ngIf="formSubject.controls['Code'].invalid &&(formSubject.controls['Code'].touched || formSubject.controls['Code'].dirty)">
@@ -26,20 +26,14 @@
         </div>
         <div class="mb-3">
             <label for="" class="">Image</label>
-            <input type="file" formControlName="Logo"  class="form-control">
-        </div>
-        <div
-            *ngIf="formSubject.controls['Logo'].invalid &&(formSubject.controls['Logo'].touched || formSubject.controls['Logo'].dirty)">
-            <span class="text-danger" *ngIf="formSubject.controls['Logo'].errors?.['required']">
-                Hãy nhập ảnh
-            </span>
+            <input type="file" (change)="chooseFile($event)"  class="form-control">
         </div>
         <div class="mb-3">
         <img [src]="imageDisplay"  width="150">
 
         </div>
         <div class="mb-3">
-            <button class="btn btn-primary" [disabled]="formSubject.invalid">Thêm</button>
+            <button class="btn btn-primary" [disabled]="formSubject.invalid">Lưu</button>
         </div>
     </form>
 </div>

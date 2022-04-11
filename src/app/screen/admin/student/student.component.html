@@ -1,5 +1,5 @@
 <div class="col-6">
-<input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="search()">
+    <input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="search()">
 </div>
 <div class="title">
     <h3>Danh Sách Sinh Viên</h3>
@@ -15,23 +15,23 @@
                 <a routerLink="/admin/sinh-vien/add" class="btn btn-success">Thêm sinh viên</a>
             </th>
         </tr>
-        </thead>
-        <tbody>
-            <ng-container  *ngFor="let item of students;index as i">
-                <tr>
-                    <td scope="row">{{i+1}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.email}}</td>
-                    <td>
-                        <img [src]="item.avatar" width="100" alt="">
-                    </td>
-                    <td>
-                        <button (click)="remove(item)" class="btn btn-danger">Xóa</button>
-                        <a routerLink="/admin/sinh-vien/edit/{{item.id}}" class="btn btn-primary ml-4">Sửa</a>
-                    </td>
-                </tr>
-            </ng-container>
-           
-    
-        </tbody>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of students;index as i">
+            <tr>
+                <td scope="row">{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                    <img [src]="item.avatar" width="100" alt="">
+                </td>
+                <td>
+                    <button *ngIf="item.roles != 'admin'" (click)="remove(item)" class="btn btn-danger">Xóa</button>
+                    <a routerLink="/admin/sinh-vien/edit/{{item.id}}" class="btn btn-primary ml-4">Sửa</a>
+                </td>
+            </tr>
+        </ng-container>
+
+
+    </tbody>
 </table>

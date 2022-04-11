@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class AuthServiceService {
   constructor(private http: HttpClient, private Router: Router) { }
   datagoogle: any;
-  login(email: string, googleid: string, name: string, photoUrl: string): Observable<any> {
+  loginGoogle(email: string, googleid: string, name: string, photoUrl: string): Observable<any> {
     return this.http.get<any>(`${environment.user_api}?email=${email}&googleId=${googleid}`)
       .pipe(
         map((item) => {
@@ -31,24 +31,34 @@ export class AuthServiceService {
               "googleId": googleid,
               "avatar": photoUrl,
               "roles": "member",
-              "StudentQuizs": []
+              "StudentQuizs": [],
+              "password": "0000000",
             }).subscribe(data => {
+              const { user } = data;
               localStorage.setItem("users", JSON.stringify({
-                "id": data.id,
+                "id": user.id,
                 "name": name,
                 "email": email,
                 "googleId": googleid,
                 "avatar": photoUrl,
                 "roles": "member",
-                "StudentQuizs": []
-
+                "StudentQuizs": [],
+                "password": "0000000"
               }));
               this.Router.navigate(['/']);
-
             })
+
           }
         })
       )
+  }
+
+  login(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.signin_api}`, data);
+  }
+
+  register(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.signup_api}`, data);
   }
   logout() {
     localStorage.removeItem("users");

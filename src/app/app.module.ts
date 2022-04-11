@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule}from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,13 +23,18 @@ import { QuestionComponent } from './screen/admin/question/question.component';
 import { AddQuestionComponent } from './screen/admin/question/add-question/add-question.component';
 import { EditQuestionComponent } from './screen/admin/question/edit-question/edit-question.component';
 import { AdminlayoutComponent } from './screen/admin/layouts/adminlayout/adminlayout.component';
-import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
 import { InnerHtmlPipe } from './untils/inner-html.pipe';
 import { ShufflePipe } from './untils/shuffle.pipe';
 import { TrimPipe } from './untils/trim.pipe';
 import { CheckScorePipe } from './untils/check-score.pipe';
-
+import { ToastrModule } from 'ngx-toastr';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import {provideStorage,getStorage} from '@angular/fire/storage';
+import { HistoryComponent } from './screen/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +60,7 @@ import { CheckScorePipe } from './untils/check-score.pipe';
     ShufflePipe,
     TrimPipe,
     CheckScorePipe,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,11 @@ import { CheckScorePipe } from './untils/check-score.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-
+    ToastrModule.forRoot(),
+    provideFirebaseApp(()=>initializeApp(environment.firebaseConfig)),
+    provideAuth(()=>getAuth()),
+    provideFirestore(()=>getFirestore()),
+    provideStorage(()=>getStorage())
   ],
   providers: [
     {
