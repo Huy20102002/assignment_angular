@@ -24,15 +24,7 @@
                 Email không đúng định dạng
             </span>
         </div>
-        <div class="mb-3">
-            <label for="" class="">Tên đăng nhập</label>
-            <input type="text" formControlName="username" class="form-control">
-        </div>
-        <div *ngIf="formStudent.controls['username'].invalid &&(formStudent.controls['username'].touched || formStudent.controls['username'].dirty)">
-            <span class="text-danger" *ngIf="formStudent.controls['username'].errors?.['required']">
-               Tên đăng nhập không được để trống
-            </span>
-        </div>
+   
         <div class="mb-3">
             <label for="" class="">Mật khẩu</label>
             <input type="password" formControlName="password" class="form-control">

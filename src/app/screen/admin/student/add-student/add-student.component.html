@@ -5,10 +5,10 @@
     <form [formGroup]="formStudent" (submit)="addStudent()">
         <div class="mb-3">
             <label for="" class="">Tên sinh viên</label>
-            <input type="text" formControlName="fullname" class="form-control">
+            <input type="text" formControlName="name" class="form-control">
         </div>
-        <div *ngIf="formStudent.controls['fullname'].invalid &&(formStudent.controls['fullname'].touched || formStudent.controls['fullname'].dirty)">
-            <span class="text-danger" *ngIf="formStudent.controls['fullname'].errors?.['required']">
+        <div *ngIf="formStudent.controls['name'].invalid &&(formStudent.controls['name'].touched || formStudent.controls['name'].dirty)">
+            <span class="text-danger" *ngIf="formStudent.controls['name'].errors?.['required']">
                 Hãy nhập tên sinh viên
             </span>
         </div>
@@ -24,15 +24,7 @@
                 Email không đúng định dạng
             </span>
         </div>
-        <div class="mb-3">
-            <label for="" class="">Tên đăng nhập</label>
-            <input type="text" formControlName="username" class="form-control">
-        </div>
-        <div *ngIf="formStudent.controls['username'].invalid &&(formStudent.controls['username'].touched || formStudent.controls['username'].dirty)">
-            <span class="text-danger" *ngIf="formStudent.controls['username'].errors?.['required']">
-               Tên đăng nhập không được để trống
-            </span>
-        </div>
+     
         <div class="mb-3">
             <label for="" class="">Mật khẩu</label>
             <input type="password" formControlName="password" class="form-control">

@@ -22,9 +22,6 @@ export class EditStudentComponent implements OnInit {
       Validators.required,
       Validators.email
     ]),
-    username: new FormControl('',[
-      Validators.required
-    ]),
     password: new FormControl('',[
       Validators.required,
       Validators.minLength(6)
