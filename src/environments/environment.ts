@@ -9,7 +9,6 @@ export const environment = {
   subjects_api: `${BaseUrlApi}/subjects`,
   questions_api: `${BaseUrlApi}`,
   Mark_Quiz: `${BaseUrlApi}/StudentQuizs`,
-  Start_Quiz: `${BaseUrlApi}/startquizs`,
   signin_api: `${BaseUrlApi}/signin`,
   signup_api: `${BaseUrlApi}/signup`,
   firebaseConfig : {

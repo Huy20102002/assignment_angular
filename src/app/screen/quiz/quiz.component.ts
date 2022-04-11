@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { QuestionsService } from 'src/app/services/questions.service';
-import { StartQuizService } from 'src/app/services/start-quiz.service';
 import { StudentService } from 'src/app/services/student.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private users: AuthServiceService, private quizs: QuestionsService, private startQuiz: StartQuizService,
+  constructor(private users: AuthServiceService, private quizs: QuestionsService,
     private Router: ActivatedRoute, private RouterNavigate: Router, private StudentService: StudentService) { }
   quiz: Array<any> = [];
   subjectName: string = "";

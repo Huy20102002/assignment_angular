@@ -12,13 +12,5 @@ export class StartQuizService {
   StudentQuiz(post: Array<any>): Observable<any> {
     return this.http.post<any>(`${environment.Mark_Quiz}`, post);
   }
-  StartQuiz(post: Array<any>): Observable<any> {
-    return this.http.post<any>(`${environment.Start_Quiz}`, post)
-  }
-  Update_StartQuiz(id: any,post: Array<any>): Observable<any> {
-    return this.http.put<any>(`${environment.Start_Quiz}/${id}`, post);
-  }
-  get_startQuiz(id: any): Observable<any> { 
-    return this.http.get<any>(`${environment.Start_Quiz}/${id}`);
-  }
+ 
 }
