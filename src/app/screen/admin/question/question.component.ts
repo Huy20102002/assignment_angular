@@ -14,6 +14,7 @@ export class QuestionComponent implements OnInit {
   subjectsName: string = "";
   keyword: string = "";
   Code: any;
+  p:number=1;
   constructor(private question: QuestionsService, private routerActived: ActivatedRoute, private router: Router,
      private subjects: SubjectsService,private title: Title) { }
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class QuestionComponent implements OnInit {
   }
   removeQuestion(code: any, id: any) {
     Swal.fire({
-      title: `Bạn có muốn đáp án này ?`,
+      title: `Bạn có muốn xóa đáp án này ?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

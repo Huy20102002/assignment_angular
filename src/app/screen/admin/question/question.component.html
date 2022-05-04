@@ -11,14 +11,14 @@
     <thead class="thead-inverse">
         <tr>
             <th>STT</th>
-            <th>Câu hỏi</th>
+            <th class="col-6">Câu hỏi</th>
             <th>
                 <a routerLink="/admin/cau-hoi/add/{{Code}}" class="btn btn-success">Thêm câu hỏi</a>
             </th>
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngFor="let item of questions;index as i">
+        <ng-container *ngFor="let item of questions  | paginate: { itemsPerPage: 20, currentPage: p };index as i">
             <tr>
                 <td scope="row">{{i+1}}</td>
                 <td class="col-2">
@@ -48,3 +48,4 @@
         </ng-container>
     </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>

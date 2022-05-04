@@ -25,18 +25,6 @@
             </span>
         </div>
    
-        <div class="mb-3">
-            <label for="" class="">Mật khẩu</label>
-            <input type="password" formControlName="password" class="form-control">
-        </div>
-        <div *ngIf="formStudent.controls['password'].invalid &&(formStudent.controls['password'].touched || formStudent.controls['password'].dirty)">
-            <span class="text-danger" *ngIf="formStudent.controls['password'].errors?.['required']">
-               Mật khẩu không được để trống
-            </span>
-            <span class="text-danger" *ngIf="formStudent.controls['password'].errors?.['minlength']">
-                Mật khẩu không được ít hơn 6 ký tự
-             </span>
-        </div>
      
         <div class="mb-3">
             <button [disabled]="formStudent.invalid" class="btn btn-primary">Cập nhật</button>

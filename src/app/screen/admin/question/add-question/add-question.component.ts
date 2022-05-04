@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -17,6 +17,7 @@ export class AddQuestionComponent implements OnInit {
   formhtml: Array<any> = [];
   selectIdAnswer: any;
   Text: Array<any> = [];
+  // Text = new FormControl([],[]);
   id: any;
   idAnswer: any;
   formQuestions: FormGroup = new FormGroup({
@@ -27,10 +28,10 @@ export class AddQuestionComponent implements OnInit {
 
     ]),
     AnswerId: new FormControl(),
-    Answers: new FormControl([])
+    Answers: new FormControl([]),
   })
   ngOnInit(): void {
-    this.title.setTitle("Trang Thêm Câu Hỏi")
+    this.title.setTitle("Trang Thêm Câu Hỏi");
   }
   addFormQuestion() {
     this.formhtml.push(this.input);

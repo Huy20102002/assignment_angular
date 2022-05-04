@@ -58,7 +58,6 @@ export class EditSubjectComponent implements OnInit {
       this.imageDisplay = reader.result;
     }
   }
-
   editSubject() {
     console.log(this.imageDisplay);
     // Upload ảnh:

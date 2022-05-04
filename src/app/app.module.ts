@@ -35,6 +35,9 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import {provideStorage,getStorage} from '@angular/fire/storage';
 import { HistoryComponent } from './screen/history/history.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NotfoundComponent } from './screen/notfound/notfound.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +64,7 @@ import { HistoryComponent } from './screen/history/history.component';
     TrimPipe,
     CheckScorePipe,
     HistoryComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,8 @@ import { HistoryComponent } from './screen/history/history.component';
     provideFirebaseApp(()=>initializeApp(environment.firebaseConfig)),
     provideAuth(()=>getAuth()),
     provideFirestore(()=>getFirestore()),
-    provideStorage(()=>getStorage())
+    provideStorage(()=>getStorage()),
+    NgxPaginationModule
   ],
   providers: [
     {

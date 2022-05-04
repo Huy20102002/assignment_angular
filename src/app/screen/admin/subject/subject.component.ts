@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubjectsService } from 'src/app/services/subjects.service';
 import Swal from 'sweetalert2';
 
@@ -9,27 +11,28 @@ import Swal from 'sweetalert2';
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
-
-  constructor(private getSubject: SubjectsService) { }
+  constructor(private getSubject: SubjectsService, private route: ActivatedRoute, private router: Router,private title: Title) {
+  }
+  p: number = 1;
+  config: any;
   subject: Array<any> = [];
-  keyword: string="";
+  keyword: string = "";
   ngOnInit(): void {
+    this.title.setTitle("Trang Danh Sách Môn Học")
     this.getSubjects();
   }
-  getSubjects(seachkeywork: string = ""){
+  getSubjects(seachkeywork: string = "") {
     this.getSubject.getSubject(seachkeywork)
-    .subscribe(res=>{
-      this.subject = res;
-    })
+      .subscribe(res => {
+       this.subject = res;
+      })
+
   }
-  remove(item: any) {
-    // this.http.delete<any>(`http://localhost:3001/subjects/${item.id}`)
-    //   .subscribe(data => {
-    //     this.subject = this.subject.filter(subject => subject.id != item.id);
-    //   })
-  }
-  search(){
+  search() {
     this.getSubjects(this.keyword);
+  }
+  pageChange(newPage: number) {
+    this.router.navigate(['/admin/mon-hoc'], { queryParams: { page: newPage } })
   }
 
 }

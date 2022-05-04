@@ -45,7 +45,6 @@ export class QuizComponent implements OnInit {
   getQuiz() {
     this.Router.params.subscribe(par => {
       const { id } = par;
-      console.log(id);
       this.Codetitle = id;
       this.quizs.getQuestion(id)
         .subscribe(res => {
@@ -107,7 +106,6 @@ export class QuizComponent implements OnInit {
     }
     this.StudentService.updateStudent(user)
       .subscribe(res => {
-        console.log(res);
       })
 
     Swal.fire({

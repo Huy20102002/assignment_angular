@@ -16,6 +16,7 @@ import { FinalComponent } from './screen/final/final.component';
 import { HistoryComponent } from './screen/history/history.component';
 import { HomeComponent } from './screen/home/home.component';
 import { LoginComponent } from './screen/login/login.component';
+import { NotfoundComponent } from './screen/notfound/notfound.component';
 import { QuizComponent } from './screen/quiz/quiz.component';
 import { RegisterComponent } from './screen/register/register.component';
 import { SubjectsComponent } from './screen/subjects/subjects.component';
@@ -51,7 +52,10 @@ const routes: Routes = [
       { path: "cau-hoi/:id", component: QuestionComponent,canActivate:[AdminGuard] },
       { path: "cau-hoi/edit/:code/:id", component: EditQuestionComponent,canActivate:[AdminGuard] }
     ]
-  },
+  },  
+  {
+    path: '**',component: NotfoundComponent
+  }
 
 ]
 

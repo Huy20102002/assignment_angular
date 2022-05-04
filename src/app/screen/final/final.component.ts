@@ -14,7 +14,7 @@ export class FinalComponent implements OnInit {
   constructor(private StudentService: StudentService, private User: AuthServiceService, private ActiveRouter: ActivatedRoute,private title:Title) { }
   result: any;
   info: any;
-  Code: any;
+  Codes: any;
   ngOnInit(): void {
     this.title.setTitle("Trang Kết Quả")
     this.getResult();
@@ -24,12 +24,12 @@ export class FinalComponent implements OnInit {
     this.info = data;
     this.ActiveRouter.params.subscribe(par => {
       const { id } = par;
-      this.Code = id;
+      this.Codes = id;
     })
     this.StudentService.getIdStudent(data.id)
       .subscribe(res => {
         const student = res;
-        let dataQuiz = student.StudentQuizs.filter((item: any) => item.Code == this.Code)
+        let dataQuiz = student.StudentQuizs.filter((item: any) => item.Code == this.Codes)
         this.result = dataQuiz[0];
         })
   }

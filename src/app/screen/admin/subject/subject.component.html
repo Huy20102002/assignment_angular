@@ -19,9 +19,11 @@
         </tr>
         </thead>
         <tbody>
-           <ng-container *ngFor="let item of subject;index as i">
+           <ng-container *ngFor="let item of subject | paginate: { itemsPerPage: 10, currentPage: p };index as i">
             <tr>
-                <td scope="row">{{i+1}}</td>
+                <td scope="row">
+                        {{i+1}}
+                </td>
                 <td>{{item.Name}}</td>
                 <td>{{item.Code}}</td>
                 <td><img src="{{item.Logo}}" width="150" alt=""></td>
@@ -33,3 +35,4 @@
            </ng-container>    
         </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
